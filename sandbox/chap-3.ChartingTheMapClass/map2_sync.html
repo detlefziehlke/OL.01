@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Examples with 2 maps</title>
+
+  <link rel="stylesheet" href="../../libs/ol3/css/ol.css"/>
+  <link rel="stylesheet" href="../../css/samples.css"/>
+
+</head>
+
+  <div id="map" class="half-map"></div>
+  <div id="map2" class="half-map"></div>
+
+<script src="../../libs/ol3/js/ol.js"></script>
+
+<script>
+
+  var layer = new ol.layer.Tile({
+    source: new ol.source.OSM()
+  })
+
+  var britz = ol.proj.transform([13.4297269, 52.4594867], 'EPSG:4326', 'EPSG:3857')
+
+  var view = new ol.View({
+    center: britz,
+    zoom: 10
+  })
+
+  var map = new ol.Map({
+    target: 'map',
+    view: view,
+    layers: [layer]
+  })
+
+  var map2 = new ol.Map({
+    target: 'map2',
+    layers: [layer]
+  });
+  map2.bindTo('view', map);
+
+</script>
+
+</body>
+</html>
