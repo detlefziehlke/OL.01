@@ -3,6 +3,11 @@
     width: 100%;
     background-color: #b5d0d0;
 }
+.map-256-fixed {
+    height: 256px;
+    width: 256px;
+    background-color: #b5d0d0;
+}
 
 .half-map {
     height: 500px;

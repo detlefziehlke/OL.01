@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!--
+  wie map2-sync, aber die 2. Map mit konstanten Zoomfaktor und ohne Controls
+-->
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Sync Restricted</title>
+
+  <link rel="stylesheet" href="../../libs/ol3/css/ol.css"/>
+  <link rel="stylesheet" href="../../css/samples.css"/>
+
+</head>
+<body>
+
+<div id="map" class="half-map"></div>
+<div id="map2" class="half-map"></div>
+
+<br>
+<hr>
+<br>
+
+<!-- Animation buttons -->
+<button onclick="doBounce(london);">Bounce To London</button>
+<button onclick="doBounce(rome);">Bounce To Rome</button>
+<br>
+<button onclick="doPan(london);">Pan To London</button>
+<button onclick="doPan(rome);">Pan To Rome</button>
+<br>
+<button onclick="doRotate();">Rotate</button>
+<button onclick="doZoom(2);">Zoom Out</button>
+<button onclick="doZoom(0.5);">Zoom In</button>
+<br>
+<button onclick="doBounceOnly();">Bounce Only</button>
+<button onclick="doShift();">Shift Only To Britz</button>
+<br>
+
+<script src="../../libs/ol3/js/ol.js"></script>
+
+<script>
+
+  var layer = new ol.layer.Tile({
+    source: new ol.source.OSM()
+  })
+
+  var britz = ol.proj.transform([13.4297269, 52.4594867], 'EPSG:4326', 'EPSG:3857')
+  var london = ol.proj.transform([-0.12755, 51.507222], 'EPSG:4326', 'EPSG:3857');
+  var rome = ol.proj.transform([12.5, 41.9], 'EPSG:4326', 'EPSG:3857');
+
+  var view = new ol.View({
+    center: london,
+    zoom: 6
+  })
+
+  var map = new ol.Map({
+    target: 'map',
+    view: view,
+    layers: [layer]
+  })
+
+  var view2 = new ol.View({
+    center: london,
+    zoom: 4   // little bit more (org. 3) to a more distinct effect
+  })
+
+  var map2 = new ol.Map({
+    target: 'map2',
+    view: view2,
+    controls: [],
+    interactions: [],
+    layers: [layer]
+  })
+
+    view2.bindTo('center', view) // most compact sol.
+
+/*  would also work
+  view.on('change:center', function (event) {
+    console.log('change:center')
+    view2.setCenter(view.getCenter())
+  })
+*/
+
+  function doBounce(location) {
+    var bounce = ol.animation.bounce({
+      resolution: map.getView().getResolution() * 2
+    });
+    var pan = ol.animation.pan({
+      source: map.getView().getCenter()
+    });
+    map.beforeRender(bounce);
+    map.beforeRender(pan);
+    map.getView().setCenter(location)
+//    map2.getView().setCenter(location) // not optimal, since in several location required
+  }
+
+  function doPan(location) {
+    var pan = ol.animation.pan({
+      source: map.getView().getCenter()
+    });
+    map.beforeRender(pan);
+    map.getView().setCenter(location);
+  }
+
+  function doRotate() {
+    var rotate = ol.animation.rotate({
+      rotation: Math.PI * 2
+    });
+    map.beforeRender(rotate);
+  }
+
+  function doZoom(factor) {
+    var resolution = map.getView().getResolution();
+    var zoom = ol.animation.zoom({
+      resolution: resolution
+    });
+    map.beforeRender(zoom);
+    map.getView().setResolution(resolution * factor);
+  }
+
+  function doBounceOnly() {
+    var bounce = ol.animation.bounce({
+      resolution: map.getView().getResolution() * 2
+    });
+    map.beforeRender(bounce)
+  }
+
+  function doShift() {
+    map.getView().setCenter(britz)
+  }
+
+</script>
+
+</body>
+</html>
