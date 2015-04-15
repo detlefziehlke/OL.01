@@ -9,6 +9,10 @@
     background-color: #b5d0d0;
 }
 
+.text-red{
+    color: red;
+}
+
 .half-map {
     height: 500px;
     width: 50%;
