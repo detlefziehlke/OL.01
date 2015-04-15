@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Stamen Layer</title>
+
+  <link rel="stylesheet" href="../../libs/ol3/css/ol.css"/>
+  <link rel="stylesheet" href="../../css/samples.css"/>
+
+</head>
+<body>
+<div id="map" class="map"></div>
+<script src="../../libs/ol3/js/ol.js"></script>
+
+<script>
+
+  var stamenLayer = new ol.layer.Tile({
+    source: new ol.source.Stamen({
+//      layer: 'toner'
+//      layer: 'terrain'
+//      layer: 'terrain-lines'
+      layer: 'watercolor'
+    })
+  })
+
+  var map = new ol.Map({
+    layers: [stamenLayer],
+    target: 'map',
+    view: new ol.View({
+      center: ol.proj.transform([13.4297269, 52.4594867], 'EPSG:4326', 'EPSG:3857'),
+//      center: ol.proj.transform([13.4297269, 52.4594867], 'EPSG:4326', 'EPSG:3857'),
+      zoom: 12
+    })
+  })
+
+</script>
+
+</body>
+</html>

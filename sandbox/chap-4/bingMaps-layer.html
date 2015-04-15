@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>BingMaps Layer</title>
+
+  <link rel="stylesheet" href="../../libs/ol3/css/ol.css"/>
+  <link rel="stylesheet" href="../../css/samples.css"/>
+
+</head>
+<body>
+<div id="map" class="map"></div>
+<script src="../../libs/ol3/js/ol.js"></script>
+
+<script>
+
+  var sourceBingMaps = new ol.source.BingMaps({
+    key: 'AmdORyCeqmJFc9WEYXU1R5g3XBTjI7UXLwig6VjjHpBNSMeXRgGDBy9n8WlikBQu',
+    imagerySet: 'Road'
+  })
+
+  var bingMapsRoad = new ol.layer.Tile({
+    source: sourceBingMaps
+  })
+
+  var bingMapsAerial = new ol.layer.Tile({
+    source: new ol.source.BingMaps({
+      key: 'AmdORyCeqmJFc9WEYXU1R5g3XBTjI7UXLwig6VjjHpBNSMeXRgGDBy9n8WlikBQu',
+      style: 'Aerial'
+    })
+  })
+
+  var map = new ol.Map({
+    layers: [bingMapsRoad, bingMapsAerial],
+    target: 'map',
+    view: new ol.View({
+      center: ol.proj.transform([6.562783, 46.517814], 'EPSG:4326', 'EPSG:3857'),
+//      center: ol.proj.transform([13.4297269, 52.4594867], 'EPSG:4326', 'EPSG:3857'),
+      zoom: 13
+    })
+
+  })
+</script>
+
+</body>
+</html>
+
+<!--
+[13.4297269, 52.4594867]
+AmdORyCeqmJFc9WEYXU1R5g3XBTjI7UXLwig6VjjHpBNSMeXRgGDBy9n8WlikBQu
+-->
