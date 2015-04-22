@@ -35,15 +35,13 @@
   })
 
 
-
   imageSource.on('imageloaderror', function (event) {
 //    var imageState = event.target.a.d.state
     var imageState = event.target.getState()
-
+    var imageUrl = event.image.n
     console.log('imageloaderror, state = ' + imageState)
-    console.log(event.toString())
-  }, this)
-
+    console.log('imageUrl = ' + imageUrl)
+  })
 
 
   imageSource.on('propertychange', function (event) {
