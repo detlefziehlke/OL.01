@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>OpenLayers Components</title>
+
+  <link rel="stylesheet" href="../../libs/ol3/css/ol.css"/>
+  <link rel="stylesheet" href="../../css/samples.css"/>
+
+</head>
+<body>
+<div id="map" class="map"></div>
+<div id="overlay" style="background-color: yellow; width: 20px;
+    height: 20px; border-radius: 10px;"></div>
+
+<script src="../../libs/ol3/js/ol-debug.js"></script>
+
+<script>
+  //------------------------------------------------------------------------------------------------
+
+  var layer = new ol.layer.Tile({
+    source: new ol.source.OSM()
+  })
+
+  var layer2 = new ol.layer.Tile({
+    source: new ol.source.WMTS({
+      url: 'http://fbinter.stadt-berlin.de/fb/wms/senstadt/berlinzoom'/*,
+       params: {'LAYERS': 'Berlin-Zoom', 'TILED': true}*/
+    })
+  })
+
+  /*
+   var layer2 = new OpenLayers.Layer.WMS(
+   "Population Density",
+   "http://sedac.ciesin.columbia.edu/geoserver/wms",
+   {layers: 'gpw-v3:gpw-v3-population-density_2000'}
+   )
+   */
+
+  var center = ol.proj.transform([13.4297269, 52.4594867], 'EPSG:4326', 'EPSG:3857')
+
+  var view = new ol.View({
+    center: center,
+    zoom: 6
+  })
+
+  var view2 = new ol.View({
+    center: [0, 0],
+    zoom: 6
+  })
+
+  /*
+   var map = new ol.Map({
+   target: 'map',
+   layers: [layer],
+   view: view
+   })
+   */
+
+  var map = new ol.Map({
+    target: 'map',
+    layers: [layer2],
+    view: view2
+  })
+
+  //------------------------------------------------------------------------------------------------
+</script>
+
+</body>
+</html>

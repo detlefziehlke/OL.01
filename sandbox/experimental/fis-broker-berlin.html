@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Playing with fis broker berlin</title>
+
+  <link rel="stylesheet" href="../../libs/ol3/css/ol.css"/>
+  <link rel="stylesheet" href="../../css/samples.css"/>
+
+</head>
+<body>
+<div id="map" class="map"></div>
+
+<script src="../../libs/ol3/js/ol.js"></script>
+
+<script>
+
+  var osm = new ol.layer.Tile({
+    source: new ol.source.OSM()
+  })
+
+  var imageSource = new ol.source.ImageWMS({
+    url: 'http://fbinter.stadt-berlin.de/fb/wms/senstadt/k_dtk50',
+    params: {
+      'LAYERS': '0',
+      'REQUEST': 'GetMap',
+      'STYLES': ['default'],
+      'SRS': 'EPSG:4326',
+      'BBOX': [13.079, 52.3284, 13.7701, 52.6877],
+      'WIDTH': '256',
+      'HEIGT': '256',
+      'FORMAT': 'jpeg'
+    }/*,
+     extent: new ol.Extent([13.079, 52.3284, 13.7701, 52.6877])*/
+  })
+
+
+
+  imageSource.on('imageloaderror', function (event) {
+//    var imageState = event.target.a.d.state
+    var imageState = event.target.getState()
+
+    console.log('imageloaderror, state = ' + imageState)
+    console.log(event.toString())
+  }, this)
+
+
+
+  imageSource.on('propertychange', function (event) {
+    console.log('imageSource#properychange ' + event.type + ' = ' + event.key)
+  })
+
+  var imageLayer = new ol.layer.Image({
+    opacity: 0,
+    source: imageSource
+  })
+
+  imageLayer.on('propertychange', function (event) {
+    console.log('imageLayer#properychange ' + event.type + ' = ' + event.key)
+  })
+
+  var view = new ol.View({
+    center: [13.4297269, 52.4594867],
+//    center: ol.proj.transform([13.4297269, 52.4594867], 'EPSG:4326', 'EPSG:3857'),
+//    center: [0, 0],
+    zoom: 10
+  })
+
+  view.on('propertychange', function (event) {
+    console.log('view#properychange ' + event.type + ' = ' + event.key)
+  })
+
+  var map = new ol.Map({
+    target: 'map',
+    layers: [imageLayer],
+    view: view
+  })
+
+  map.on('precompose', function (event) {
+    console.log('precompose')
+  })
+
+  map.on('postrender', function (event) {
+    console.log('postrender')
+  })
+
+  map.on('propertychange', function (event) {
+    console.log('map#properychange ' + event.type + ' = ' + event.key)
+  })
+
+</script>
+
+</body>
+</html>
