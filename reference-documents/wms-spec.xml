@@ -1,0 +1,371 @@
+<WMS_Capabilities xmlns="http://www.opengis.net/wms" xmlns:gmd="http://www.isotc211.org/2005/gmd"
+                  xmlns:inspire_common="http://inspire.ec.europa.eu/schemas/common/1.0"
+                  xmlns:inspire_vs="http://inspire.ec.europa.eu/schemas/inspire_vs/1.0"
+                  xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  version="1.3.0"
+                  xsi:schemaLocation="http://inspire.ec.europa.eu/schemas/inspire_vs/1.0 http://inspire.ec.europa.eu/schemas/inspire_vs/1.0/inspire_vs.xsd http://www.opengis.net/wms http://schemas.opengis.net/wms/1.3.0/capabilities_1_3_0.xsd">
+  <Service>
+    <Name>WMS</Name>
+    <Title>Digitale Topographische Karte 1: 50 000 (DTK50)</Title>
+    <Abstract>
+      Als Topographische Karte im Maßstab 1:50 000 stellt die DTK50 sichtbare Erscheinungen der Erdoberfläche wie
+      Geländeformen mit Höhenangaben, Gewässer, Vegetation, Siedlungen, Wirtschaftsflächen, Verkehrswege, Grenzen,
+      ausgewählte Gebäude, Einzelobjekte (Denkmale, Türme, Aussichtspunkte, Windmühlen etc.) dar. Diese können durch
+      Kartenbeschriftungen erläutert werden.
+    </Abstract>
+    <KeywordList>
+      <Keyword vocabulary="ISO">Land cover</Keyword>
+      <Keyword vocabulary="ISO">Land use</Keyword>
+      <Keyword vocabulary="ISO">Buildings</Keyword>
+      <Keyword vocabulary="ISO">Geographical names</Keyword>
+      <Keyword vocabulary="ISO">Hydrography</Keyword>
+      <Keyword vocabulary="ISO">Transport networks</Keyword>
+      <Keyword vocabulary="ISO">Administrative units</Keyword>
+      <Keyword vocabulary="BE/BB Schlagwortliste, Version 1.0">Amtliche Karte</Keyword>
+      <Keyword>open data</Keyword>
+      <Keyword>opendata</Keyword>
+      <Keyword>AdVMIS</Keyword>
+      <Keyword>Karten</Keyword>
+      <Keyword>Geodaten</Keyword>
+      <Keyword>Berlin</Keyword>
+      <Keyword>Rasterkarte</Keyword>
+      <Keyword>dtk50</Keyword>
+      <Keyword>1:50000</Keyword>
+      <Keyword>1:50.000</Keyword>
+      <Keyword>Geobasiskarte</Keyword>
+      <Keyword>Topografie</Keyword>
+      <Keyword>Topographie</Keyword>
+      <Keyword>TK50</Keyword>
+      <Keyword>TK50 (ATKIS)</Keyword>
+      <Keyword>Landeskartenwerke</Keyword>
+      <Keyword>topografische Karte</Keyword>
+      <Keyword>Rasterdaten</Keyword>
+      <Keyword>topografisch</Keyword>
+      <Keyword>äöü</Keyword>
+    </KeywordList>
+    <OnlineResource xlink:href="http://www.stadtentwicklung.berlin.de/geoinformation/fis-broker/" xlink:type="simple"/>
+    <ContactInformation>
+      <ContactPersonPrimary>
+        <ContactPerson/>
+        <ContactOrganization>
+          Senatsverwaltung für Stadtentwicklung und Umwelt Berlin
+        </ContactOrganization>
+      </ContactPersonPrimary>
+      <ContactPosition>pointOfContact</ContactPosition>
+      <ContactAddress>
+        <AddressType>postal</AddressType>
+        <Address/>
+        <City/>
+        <StateOrProvince/>
+        <PostCode/>
+        <Country>Germany</Country>
+      </ContactAddress>
+      <ContactVoiceTelephone>+49-30-90139-5257</ContactVoiceTelephone>
+      <ContactElectronicMailAddress>fisbroker@senstadtum.berlin.de</ContactElectronicMailAddress>
+    </ContactInformation>
+    <Fees>
+      Nutzungsbedingungen: Für die Verwendung der Daten gelten folgende Nutzungsbestimmungen:
+      http://www.stadtentwicklung.berlin.de/geoinformation/download/nutzIII.pdf - Der Quellenvermerk gemäß §2 lautet
+      "Geoportal Berlin / [Titel des Datensatzes]".
+    </Fees>
+    <AccessConstraints>Es gelten keine Bedingungen</AccessConstraints>
+  </Service>
+  <Capability>
+    <Request>
+      <GetCapabilities>
+        <Format>text/xml</Format>
+        <DCPType>
+          <HTTP>
+            <Get>
+              <OnlineResource xlink:type="simple" xlink:href="http://fbinter.stadt-berlin.de/fb/wms/senstadt/k_dtk50?"/>
+            </Get>
+            <Post>
+              <OnlineResource xlink:type="simple" xlink:href="http://fbinter.stadt-berlin.de/fb/wms/senstadt/k_dtk50?"/>
+            </Post>
+          </HTTP>
+        </DCPType>
+      </GetCapabilities>
+      <GetMap>
+        <Format>image/jpeg</Format>
+        <Format>image/png</Format>
+        <DCPType>
+          <HTTP>
+            <Get>
+              <OnlineResource xlink:type="simple" xlink:href="http://fbinter.stadt-berlin.de/fb/wms/senstadt/k_dtk50?"/>
+            </Get>
+            <Post>
+              <OnlineResource xlink:type="simple" xlink:href="http://fbinter.stadt-berlin.de/fb/wms/senstadt/k_dtk50?"/>
+            </Post>
+          </HTTP>
+        </DCPType>
+      </GetMap>
+      <GetFeatureInfo>
+        <Format>text/html</Format>
+        <Format>text/xml</Format>
+        <DCPType>
+          <HTTP>
+            <Get>
+              <OnlineResource xlink:type="simple" xlink:href="http://fbinter.stadt-berlin.de/fb/wms/senstadt/k_dtk50?"/>
+            </Get>
+            <Post>
+              <OnlineResource xlink:type="simple" xlink:href="http://fbinter.stadt-berlin.de/fb/wms/senstadt/k_dtk50?"/>
+            </Post>
+          </HTTP>
+        </DCPType>
+      </GetFeatureInfo>
+    </Request>
+    <Exception>
+      <Format>XML</Format>
+    </Exception>
+    <inspire_vs:ExtendedCapabilities>
+      <inspire_common:MetadataUrl xsi:type="inspire_common:resourceLocatorType">
+        <inspire_common:URL>
+          http://fbinter.stadt-berlin.de/fb/csw?REQUEST=GetRecordById&SERVICE=CSW&VERSION=2.0.2&
+          ID=dc26b74a-f6ea-3b1d-9907-528a008a5df7&ELEMENTSETNAME=FULL
+        </inspire_common:URL>
+        <inspire_common:MediaType>application/vnd.ogc.csw.GetRecordByIdResponse_xml</inspire_common:MediaType>
+      </inspire_common:MetadataUrl>
+      <inspire_common:SupportedLanguages>
+        <inspire_common:DefaultLanguage>
+          <inspire_common:Language>ger</inspire_common:Language>
+        </inspire_common:DefaultLanguage>
+      </inspire_common:SupportedLanguages>
+      <inspire_common:ResponseLanguage>
+        <inspire_common:Language>ger</inspire_common:Language>
+      </inspire_common:ResponseLanguage>
+    </inspire_vs:ExtendedCapabilities>
+    <!--  Layers  -->
+    <Layer queryable="0" opaque="0">
+      <Title>Digitale Topographische Karte 1: 50 000 (DTK50)</Title>
+      <Abstract>
+        Das Landeskartenwerk Digitale Topographische Karte 1:50 000 visualisiert die amtlichen Geobasisdaten ATKIS und
+        ALK im bundeseinheitlichen Regelblattschnitt in unterschiedlichen Farbausprägungen.
+      </Abstract>
+      <KeywordList>
+        <Keyword>open data</Keyword>
+        <Keyword>opendata</Keyword>
+        <Keyword>AdVMIS</Keyword>
+        <Keyword>Karten</Keyword>
+        <Keyword>Geodaten</Keyword>
+        <Keyword>Berlin</Keyword>
+        <Keyword>Rasterkarte</Keyword>
+        <Keyword>dtk50</Keyword>
+        <Keyword>1:50000</Keyword>
+        <Keyword>1:50.000</Keyword>
+        <Keyword>Geobasiskarte</Keyword>
+        <Keyword>Topografie</Keyword>
+        <Keyword>Topographie</Keyword>
+        <Keyword>TK50</Keyword>
+        <Keyword>TK50 (ATKIS)</Keyword>
+        <Keyword>Landeskartenwerke</Keyword>
+        <Keyword>topografische Karte</Keyword>
+        <Keyword>Rasterdaten</Keyword>
+        <Keyword>topografisch</Keyword>
+        <Keyword>äöü</Keyword>
+      </KeywordList>
+      <CRS>EPSG:3068</CRS>
+      <CRS>EPSG:25833</CRS>
+      <CRS>EPSG:4326</CRS>
+      <EX_GeographicBoundingBox>
+        <westBoundLongitude>13.079</westBoundLongitude>
+        <eastBoundLongitude>13.7701</eastBoundLongitude>
+        <southBoundLatitude>52.3284</southBoundLatitude>
+        <northBoundLatitude>52.6877</northBoundLatitude>
+      </EX_GeographicBoundingBox>
+      <BoundingBox minx="2750.0092" miny="250.0101" maxx="49780.0092" maxy="40100.01" CRS="EPSG:3068"/>
+      <BoundingBox minx="369097.8529" miny="5799298.1358" maxx="416865.038" maxy="5838236.2097" CRS="EPSG:25833"/>
+      <BoundingBox minx="52.3284" miny="13.079" maxx="52.6877" maxy="13.7701" CRS="EPSG:4326"/>
+      <AuthorityURL name="GDI-DE">
+        <OnlineResource xlink:type="simple" xlink:href="http://www.gdi-de.org"/>
+      </AuthorityURL>
+      <Identifier authority="GDI-DE">ac6a9d5f-27bb-3ed3-8f6b-18d8f77b1e56</Identifier>
+      <MetadataURL type="TC211">
+        <Format>text/xml</Format>
+        <OnlineResource
+            xlink:href="http://fbinter.stadt-berlin.de/fb/csw?REQUEST=GetRecordById&SERVICE=CSW&VERSION=2.0.2&ID=480dc1bf-1337-3e8b-bd96-5df33a0d5c4b&ELEMENTSETNAME=FULL"/>
+      </MetadataURL>
+      <Style>
+        <Name>inspire_common:DEFAULT</Name>
+        <Title>Standard</Title>
+        <LegendURL width="72" height="72">
+          <Format>image/gif</Format>
+          <OnlineResource xlink:href="http://fbinter.stadt-berlin.de/fb_daten/legenden/leg_dtk50.gif"/>
+        </LegendURL>
+      </Style>
+      <Layer queryable="0" opaque="0">
+        <Name>0</Name>
+        <Title>DTK50, farbig</Title>
+        <Abstract>
+          Das Landeskartenwerk Digitale Topographische Karte 1:50 000 visualisiert die amtlichen Geobasisdaten ATKIS und
+          ALK im bundeseinheitlichen Regelblattschnitt in Farbe.
+        </Abstract>
+        <KeywordList>
+          <Keyword>open data</Keyword>
+          <Keyword>opendata</Keyword>
+          <Keyword>AdVMIS</Keyword>
+          <Keyword>Karten</Keyword>
+          <Keyword>Geodaten</Keyword>
+          <Keyword>Berlin</Keyword>
+          <Keyword>Rasterkarte</Keyword>
+          <Keyword>dtk50</Keyword>
+          <Keyword>1:50000</Keyword>
+          <Keyword>1:50.000</Keyword>
+          <Keyword>Geobasiskarte</Keyword>
+          <Keyword>Topografie</Keyword>
+          <Keyword>Topographie</Keyword>
+          <Keyword>TK50</Keyword>
+          <Keyword>TK50 (ATKIS)</Keyword>
+          <Keyword>Landeskartenwerke</Keyword>
+          <Keyword>topografische Karte</Keyword>
+          <Keyword>Rasterdaten</Keyword>
+          <Keyword>topografisch</Keyword>
+          <Keyword>äöü</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3068</CRS>
+        <CRS>EPSG:25833</CRS>
+        <CRS>EPSG:4326</CRS>
+        <EX_GeographicBoundingBox>
+          <westBoundLongitude>13.079</westBoundLongitude>
+          <eastBoundLongitude>13.7701</eastBoundLongitude>
+          <southBoundLatitude>52.3284</southBoundLatitude>
+          <northBoundLatitude>52.6877</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox minx="2750.0092" miny="250.0101" maxx="49780.0092" maxy="40100.01" CRS="EPSG:3068"/>
+        <BoundingBox minx="369097.8529" miny="5799298.1358" maxx="416865.038" maxy="5838236.2097" CRS="EPSG:25833"/>
+        <BoundingBox minx="52.3284" miny="13.079" maxx="52.6877" maxy="13.7701" CRS="EPSG:4326"/>
+        <Identifier authority="GDI-DE">ac6a9d5f-27bb-3ed3-8f6b-18d8f77b1e56</Identifier>
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource
+              xlink:href="http://fbinter.stadt-berlin.de/fb/csw?REQUEST=GetRecordById&SERVICE=CSW&VERSION=2.0.2&ID=480dc1bf-1337-3e8b-bd96-5df33a0d5c4b&ELEMENTSETNAME=FULL"/>
+        </MetadataURL>
+        <Style>
+          <Name>gdi_default</Name>
+          <Title>Standard GDI Style</Title>
+          <LegendURL width="72" height="72">
+            <Format>image/gif</Format>
+            <OnlineResource xlink:href="http://fbinter.stadt-berlin.de/fb_daten/legenden/leg_dtk50.gif"/>
+          </LegendURL>
+        </Style>
+        <MinScaleDenominator>2000</MinScaleDenominator>
+        <MaxScaleDenominator>400000</MaxScaleDenominator>
+      </Layer>
+      <Layer queryable="0" opaque="0">
+        <Name>1</Name>
+        <Title>DTK50, in Graustufen</Title>
+        <Abstract>
+          Das Landeskartenwerk Digitale Topographische Karte 1:50 000 visualisiert die amtlichen Geobasisdaten ATKIS und
+          ALK im bundeseinheitlichen Regelblattschnitt in Graustufen.
+        </Abstract>
+        <KeywordList>
+          <Keyword>open data</Keyword>
+          <Keyword>opendata</Keyword>
+          <Keyword>AdVMIS</Keyword>
+          <Keyword>Karten</Keyword>
+          <Keyword>Geodaten</Keyword>
+          <Keyword>Berlin</Keyword>
+          <Keyword>Rasterkarte</Keyword>
+          <Keyword>dtk50</Keyword>
+          <Keyword>1:50000</Keyword>
+          <Keyword>1:50.000</Keyword>
+          <Keyword>Geobasiskarte</Keyword>
+          <Keyword>Topografie</Keyword>
+          <Keyword>Topographie</Keyword>
+          <Keyword>TK50</Keyword>
+          <Keyword>TK50 (ATKIS)</Keyword>
+          <Keyword>Landeskartenwerke</Keyword>
+          <Keyword>topografische Karte</Keyword>
+          <Keyword>Rasterdaten</Keyword>
+          <Keyword>topografisch</Keyword>
+          <Keyword>äöü</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3068</CRS>
+        <CRS>EPSG:25833</CRS>
+        <CRS>EPSG:4326</CRS>
+        <EX_GeographicBoundingBox>
+          <westBoundLongitude>13.079</westBoundLongitude>
+          <eastBoundLongitude>13.7701</eastBoundLongitude>
+          <southBoundLatitude>52.3284</southBoundLatitude>
+          <northBoundLatitude>52.6877</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox minx="2750.0092" miny="250.0101" maxx="49780.0092" maxy="40100.01" CRS="EPSG:3068"/>
+        <BoundingBox minx="369097.8529" miny="5799298.1358" maxx="416865.038" maxy="5838236.2097" CRS="EPSG:25833"/>
+        <BoundingBox minx="52.3284" miny="13.079" maxx="52.6877" maxy="13.7701" CRS="EPSG:4326"/>
+        <Identifier authority="GDI-DE">ac6a9d5f-27bb-3ed3-8f6b-18d8f77b1e56</Identifier>
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource
+              xlink:href="http://fbinter.stadt-berlin.de/fb/csw?REQUEST=GetRecordById&SERVICE=CSW&VERSION=2.0.2&ID=480dc1bf-1337-3e8b-bd96-5df33a0d5c4b&ELEMENTSETNAME=FULL"/>
+        </MetadataURL>
+        <Style>
+          <Name>gdi_default</Name>
+          <Title>Standard GDI Style</Title>
+          <LegendURL width="72" height="72">
+            <Format>image/gif</Format>
+            <OnlineResource xlink:href="http://fbinter.stadt-berlin.de/fb_daten/legenden/leg_dtk50.gif"/>
+          </LegendURL>
+        </Style>
+        <MinScaleDenominator>2000</MinScaleDenominator>
+        <MaxScaleDenominator>400000</MaxScaleDenominator>
+      </Layer>
+      <Layer queryable="0" opaque="0">
+        <Name>2</Name>
+        <Title>DTK50, s/w</Title>
+        <Abstract>
+          Das Landeskartenwerk Digitale Topographische Karte 1:50 000 visualisiert die amtlichen Geobasisdaten ATKIS und
+          ALK im bundeseinheitlichen Regelblattschnitt in Schwarz-Weiß.
+        </Abstract>
+        <KeywordList>
+          <Keyword>open data</Keyword>
+          <Keyword>opendata</Keyword>
+          <Keyword>AdVMIS</Keyword>
+          <Keyword>Karten</Keyword>
+          <Keyword>Geodaten</Keyword>
+          <Keyword>Berlin</Keyword>
+          <Keyword>Rasterkarte</Keyword>
+          <Keyword>dtk50</Keyword>
+          <Keyword>1:50000</Keyword>
+          <Keyword>1:50.000</Keyword>
+          <Keyword>Geobasiskarte</Keyword>
+          <Keyword>Topografie</Keyword>
+          <Keyword>Topographie</Keyword>
+          <Keyword>TK50</Keyword>
+          <Keyword>TK50 (ATKIS)</Keyword>
+          <Keyword>Landeskartenwerke</Keyword>
+          <Keyword>topografische Karte</Keyword>
+          <Keyword>Rasterdaten</Keyword>
+          <Keyword>topografisch</Keyword>
+          <Keyword>äöü</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3068</CRS>
+        <CRS>EPSG:25833</CRS>
+        <CRS>EPSG:4326</CRS>
+        <EX_GeographicBoundingBox>
+          <westBoundLongitude>13.079</westBoundLongitude>
+          <eastBoundLongitude>13.7701</eastBoundLongitude>
+          <southBoundLatitude>52.3284</southBoundLatitude>
+          <northBoundLatitude>52.6877</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox minx="2750.0092" miny="250.0101" maxx="49780.0092" maxy="40100.01" CRS="EPSG:3068"/>
+        <BoundingBox minx="369097.8529" miny="5799298.1358" maxx="416865.038" maxy="5838236.2097" CRS="EPSG:25833"/>
+        <BoundingBox minx="52.3284" miny="13.079" maxx="52.6877" maxy="13.7701" CRS="EPSG:4326"/>
+        <Identifier authority="GDI-DE">ac6a9d5f-27bb-3ed3-8f6b-18d8f77b1e56</Identifier>
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource
+              xlink:href="http://fbinter.stadt-berlin.de/fb/csw?REQUEST=GetRecordById&SERVICE=CSW&VERSION=2.0.2&ID=480dc1bf-1337-3e8b-bd96-5df33a0d5c4b&ELEMENTSETNAME=FULL"/>
+        </MetadataURL>
+        <Style>
+          <Name>gdi_default</Name>
+          <Title>Standard GDI Style</Title>
+          <LegendURL width="72" height="72">
+            <Format>image/gif</Format>
+            <OnlineResource xlink:href="http://fbinter.stadt-berlin.de/fb_daten/legenden/leg_dtk50.gif"/>
+          </LegendURL>
+        </Style>
+        <MinScaleDenominator>2000</MinScaleDenominator>
+        <MaxScaleDenominator>400000</MaxScaleDenominator>
+      </Layer>
+    </Layer>
+  </Capability>
+</WMS_Capabilities>

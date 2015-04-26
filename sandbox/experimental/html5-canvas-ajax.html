@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="de">
+  <meta charset="UTF-8">
+  <meta harry="doof">
+  <meta Access-Control-Allow-Origin="http://www.html5canvastutorials.com">
+  <title>Laoding image ajax</title>
+</head>
+<body>
+<canvas id="myCanvas" width="1500" height="780"></canvas>
+
+<!--<img src="http://fbinter.stadt-berlin.de/fb/wms/senstadt/k_dtk50?styles=default&srs=EPSG:4326&REQUEST=GetMap&LAYERS=0&bbox=13.079,52.3284,13.7701,52.6877&width=256&height=256&format=jpeg"/>-->
+<!--<img src="Ostsee2014_K-3_009.jpg"/>-->
+
+<script>
+
+//  var url = 'http://www.html5canvastutorials.com/demos/assets/dataURL.txt'
+  var url = 'http://fbinter.stadt-berlin.de/fb/wms/senstadt/k_dtk50?VERSION=1.3.0&REQUEST=GetMap&LAYERS=1&STYLES=&CRS=EPSG:4326&BBOX=52.455571,13.423509,52.463062,13.443958&FORMAT=image/jpeg&WIDTH=1500&HEIGHT=780'
+
+  function loadCanvas(dataURL) {
+    var canvas = document.getElementById('myCanvas');
+    var context = canvas.getContext('2d');
+
+    // load image from data url
+    var imageObj = new Image();
+    imageObj.onload = function () {
+      context.drawImage(this, 0, 0);
+    };
+
+    imageObj.src = dataURL;
+  }
+
+  // make ajax call to get image data url
+  var request = new XMLHttpRequest()
+  request.open('GET', url, true)
+  request.onreadystatechange = function () {
+    console.log(request.readyState)
+    // Makes sure the document is ready to parse.
+    if (request.readyState == 4) {
+      console.log(request.status)
+      // Makes sure it's found the file.
+      if (request.status == 200) {
+//        loadCanvas(request.response)
+        loadCanvas(request.responseText)
+      }
+    }
+  };
+  request.send(null);
+
+</script>
+
+</body>
+</html>

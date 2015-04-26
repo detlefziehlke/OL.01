@@ -13,44 +13,58 @@
 <div id="overlay" style="background-color: yellow; width: 20px;
     height: 20px; border-radius: 10px;"></div>
 
-  <script src="../../libs/ol3/js/ol-debug.js"></script>
+<script src="../../libs/ol3/js/ol-debug.js"></script>
 
-  <script>
-    //------------------------------------------------------------------------------------------------
+<script>
+  //------------------------------------------------------------------------------------------------
 
-    var layer = new ol.layer.Tile({
-      source: new ol.source.OSM()
-    })
+  var imageSource = new ol.source.OSM()
 
-    var interaction = new ol.interaction.DragRotateAndZoom()
-    var interactions = ol.interaction.defaults().extend([interaction]);
+  var layer = new ol.layer.Tile({
+    source: imageSource
+  })
 
-    var control = new ol.control.FullScreen()
-    var controls = ol.control.defaults().extend([control])
+  imageSource.on('imageloaderror', function (event) {
+    var imageState = event.target.getState()
+    var imageUrl = event.image.n
+    console.log('imageloaderror, state = ' + imageState)
+    console.log('imageUrl = ' + imageUrl)
+  })
 
-    var center = ol.proj.transform([13.4297269, 52.4594867], 'EPSG:4326', 'EPSG:3857')
-//    var center = ol.proj.transform([-1.812, 52.443], 'EPSG:4326', 'EPSG:3857');
-    var overlay = new ol.Overlay({
-      position: center,
-      element: document.getElementById('overlay')
-    })
+  var interaction = new ol.interaction.DragRotateAndZoom()
+  var interactions = ol.interaction.defaults().extend([interaction]);
 
-    var view = new ol.View({
-      center: center,
-      zoom: 6
-    })
+  var control = new ol.control.FullScreen()
+  var controls = ol.control.defaults().extend([control])
 
-    var map = new ol.Map({
-      target: 'map',
-      layers: [layer],
-      interactions: interactions,
-      controls: controls,
-      overlays: [overlay],
-      view: view
-    })
+  var center = ol.proj.transform([13.4297269, 52.4594867], 'EPSG:4326', 'EPSG:3857')
+  //    var center = ol.proj.transform([-1.812, 52.443], 'EPSG:4326', 'EPSG:3857');
+  var overlay = new ol.Overlay({
+    position: center,
+    element: document.getElementById('overlay')
+  })
 
-    //------------------------------------------------------------------------------------------------
-  </script>
+  var view = new ol.View({
+    center: center,
+    zoom: 6
+  })
+
+  var map = new ol.Map({
+    target: 'map',
+    layers: [layer],
+    interactions: interactions,
+    controls: controls,
+    overlays: [overlay],
+    view: view
+  })
+
+  map.on('postrender', function (event) {
+    console.log('postrender')
+  })
+
+
+  //------------------------------------------------------------------------------------------------
+</script>
 
 </body>
 </html>

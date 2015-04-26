@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>FIS Berlin</title>
+
+  <link rel="stylesheet" href="../../libs/ol3/css/ol.css"/>
+  <link rel="stylesheet" href="../../css/samples.css"/>
+
+</head>
+<body>
+<h1>Test mit FIS Broker Berlin</h1>
+
+<div id="map" class="map-fis"></div>
+
+<script src="../../libs/ol3/js/ol.js"></script>
+
+<script>
+
+  var params = {
+    /*
+     'VERSION': '1.3.0',
+     'REQUEST': 'GetMap',
+     'CRS': 'EPSG:4326',
+     'BBOX': [52.455571, 13.423509, 52.463062, 13.443958],
+     'FORMAT': 'image/jpeg',
+     'WIDTH': 1500,
+     'HEIGHT': 780,
+     'STYLES': ''
+     */
+    'LAYERS': '1'
+  }
+
+  //  Source    -----------------------------------------------------------------------------
+  var imageSource = new ol.source.ImageWMS({
+    url: 'http://fbinter.stadt-berlin.de/fb/wms/senstadt/k_dtk50',
+    'params': params
+//    serverType: 'geoserver'
+    /*
+     'params': {
+     'LAYERS': '1',
+     'TRANSPARENT':false
+     }
+     */
+  })
+
+  //  View    -------------------------------------------------------------------------------
+  var view = new ol.View({
+//  projection: 'EPSG:4326', //-> 'keine' Reaktion
+//  center: ol.proj.transform([13.4297269, 52.4594867], 'EPSG:4326', 'EPSG:3857'),
+    projection: new ol.proj.Projection({code: 'EPSG:4326', units: 'm'}),
+    center: [13.4297269, 52.4594867],
+    zoom: 10
+  })
+
+  imageSource.on('imageloaderror', function (event) {
+    var imageState = event.target.getState()
+    var imageUrl = event.image.n
+    console.log('imageloaderror, state = ' + imageState)
+    console.log('imageUrl = ' + imageUrl)
+  })
+
+  //  Layer   -------------------------------------------------------------------------------
+  var imageLayer = new ol.layer.Image({
+    opacity: 0,
+    source: imageSource
+//    projection: 'EPSG:4326'
+//    extent: [13.443958, 52.455571, 13.423509, 52.463062]
+  })
+
+  //  Map     -------------------------------------------------------------------------------
+  var map = new ol.Map({
+    target: 'map',
+    layers: [imageLayer],
+    view: view
+  })
+
+</script>
+
+</body>
+</html>

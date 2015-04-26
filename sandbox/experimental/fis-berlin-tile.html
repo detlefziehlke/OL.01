@@ -1,45 +1,30 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Playing with fis broker berlin</title>
+  <title>FIS Berlin WMS Tiles</title>
 
   <link rel="stylesheet" href="../../libs/ol3/css/ol.css"/>
   <link rel="stylesheet" href="../../css/samples.css"/>
 
 </head>
 <body>
-<div id="map" class="map"></div>
+<div id="map" class="map-fis"></div>
+
 <script src="../../libs/ol3/js/ol.js"></script>
 
 <script>
-  var params = {
-    'VERSION': '1.3.0',
-    'REQUEST': 'GetMap',
-    'LAYERS': '1',
-    'STYLES': '',
-    'CRS': 'EPSG:4326',
-    'BBOX': [52.455571, 13.423509, 52.463062, 13.443958],
-    'FORMAT': 'image/jpeg',
-    'WIDTH': 1500,
-    'HEIGHT': 780
-  }
-
+  //  ImageSource
   var imageSource = new ol.source.ImageWMS({
     url: 'http://fbinter.stadt-berlin.de/fb/wms/senstadt/k_dtk50',
-    'params': params
-    /*
-     params: {
-     'LAYERS': '0',
-     'REQUEST': 'GetMap',
-     'STYLES': ['default'],
-     'SRS': 'EPSG:4326',
-     'BBOX': [13.079, 52.3284, 13.7701, 52.6877],
-     'WIDTH': '256',
-     'HEIGT': '256',
-     'FORMAT': 'jpeg'
+    params: {
+      'LAYERS': '1'
+    }
+  })
 
-     }  */
+  // Layer
+  var imageLayer = new ol.layer.Image({
+    source: imageSource
   })
 
   imageSource.on('imageloaderror', function (event) {
@@ -49,21 +34,21 @@
     console.log('imageUrl = ' + imageUrl)
   })
 
-  var imageLayer = new ol.layer.Image({
-    opacity: 0,
-    source: imageSource
-  })
-
+  // View
   var view = new ol.View({
+    projection: 'EPSG:4326',
     center: [13.4297269, 52.4594867],
-    zoom: 10
+    zoom: 0
   })
 
+  // Map
   var map = new ol.Map({
     target: 'map',
     layers: [imageLayer],
     view: view
   })
+
+
 </script>
 
 </body>
