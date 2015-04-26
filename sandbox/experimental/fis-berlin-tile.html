@@ -15,15 +15,19 @@
 
 <script>
   //  ImageSource
+//  var imageSource = new ol.source.TileWMS({
   var imageSource = new ol.source.ImageWMS({
-    url: 'http://fbinter.stadt-berlin.de/fb/wms/senstadt/k_dtk50',
+    url: 'http://fbinter.stadt-berlin.de/fb/wms/senstadt/k_dtk50?BBOX=52.455571,13.423509,52.463062,13.443958',
     params: {
       'LAYERS': '1'
     }
   })
 
   // Layer
+//  var imageLayer = new ol.layer.Tile({
   var imageLayer = new ol.layer.Image({
+//    extent: [13.423509, 52.455571, 13.443958, 52.463062],
+//    extent: [52.455571, 13.423509, 52.463062, 13.443958],
     source: imageSource
   })
 
@@ -38,6 +42,7 @@
   var view = new ol.View({
     projection: 'EPSG:4326',
     center: [13.4297269, 52.4594867],
+//    center: [52.4594867,13.4297269],
     zoom: 0
   })
 
@@ -45,6 +50,8 @@
   var map = new ol.Map({
     target: 'map',
     layers: [imageLayer],
+//    extent: [52.455571, 13.423509, 52.463062, 13.443958],
+//    extent: [13.423509, 52.455571, 13.443958, 52.463062],
     view: view
   })
 
