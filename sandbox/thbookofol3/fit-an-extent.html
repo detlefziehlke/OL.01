@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+
+  <title>OL3 fit an extent</title>
+
+  <link rel="stylesheet" href="../../libs/ol3/css/ol.css"/>
+  <link rel="stylesheet" href="../../css/thebook.css"/>
+
+</head>
+
+<body style="font-family: sans-serif">
+<h1>OL3 fit an extent</h1>
+
+<!--
+<form role="form">
+  <table border="0">
+    <tr>
+      <td><label for="minlon">Min. Longitude</label>
+      <td><input type="text" id="minlon"/>
+
+      <td><label for="minlat">Min. Latitude</label>
+      <td><input type="text" id="minlat"/>
+    </tr>
+    <tr>
+      <td><label for="maxlon">Max. Longitude</label>
+      <td><input type="text" id="maxlon"/>
+
+      <td><label for="maxlat">Max. Latitude</label>
+      <td><input type="text" id="maxlat"/>
+    </tr>
+  </table>
+</form>
+
+<br>
+<button type="button" id="change">Change</button>
+-->
+
+<div id="map" class="map"></div>
+
+<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../libs/ol3/js/ol.js"></script>
+<script>
+
+  var map = new ol.Map({
+    target: map,
+//    renderer: 'canvas',
+    layers: [
+      new ol.layer.Tile({
+        source: new ol.source.OSM()
+      })
+    ],
+    view: new ol.View({
+      center: ol.proj.transform([2.1833, 41.3833], 'EPSG:4326', 'EPSG:3857'),
+      zoom: 6
+    })
+  })
+
+  /*
+   $(document).ready(function () {
+
+   var extent = map.getView().calculateExtent(map.getSize)
+   extent = ol.extent.applyTransform(extent, ol.proj.getTransform("EPSG:3857", "EPSG:4326"))
+
+   $('#minlon').val(extent[0])
+   $('#minlat').val(extent[0])
+   $('#maxlon').val(extent[0])
+   $('#maxlat').val(extent[0])
+
+   })
+   */
+
+</script>
+
+</body>
+
+</html>
